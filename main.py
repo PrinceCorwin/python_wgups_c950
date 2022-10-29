@@ -2,9 +2,15 @@
 
 # import csv
 import datetime
-from run_route import run_route, route_mileage, pkg_status
-
+from run_route import run_route, pkg_status
+from csv_to_hashmap import get_dist_data, get_map
 class Main:       
+    # Call the run_route function to get delivery sequence and distance data
+    del1, del2, del3, currentHash = run_route()
+    print(del1[1] + del2[1] + del3[1])
+    for i in range(1,41):
+        # print("\n")
+        currentHash.print(str(i))
     # Interactive user interface printed to console when program runs
     # Glabal variables and User Instructions
     num_pkgs = 40 # query this number  
@@ -61,9 +67,11 @@ class Main:
                     print(f'Current route has {num_pkgs} packages. Enter 1-{num_pkgs}')
             if pkg_id == 'done':
                 break
+            # print status of single package to console per ID selcted by user
             print(f"\nPackage {pkg_id} status at time {valid_time}")
             # pkgStatus(pkg_id, valid_time)
         else:
+            # print status of all packages to console as requested by user
             print(f"\nStatus of all packages at time {valid_time}")
             # pkgStatus("all", valid_time)
         # Ask user if they want to continue with another query

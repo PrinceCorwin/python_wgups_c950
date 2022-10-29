@@ -33,8 +33,8 @@ class HashMap:
 
     def print(self, id):
         hashIndex = self._get_bucket_index(id)
-        print(f"Package {id}: ")
+        print(f"\nPackage {id}: ")
         values = self.map[hashIndex][id]
         for i in values.keys():
-            if i != "0":
+            if i != "Pkg ID":
                 print(f"{i}: {values[i]}")
