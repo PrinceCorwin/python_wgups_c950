@@ -1,12 +1,13 @@
-# HashMap Constructor function
+# Self adjusting HashMap class data structure. 
 # Space-Time complexity: O(1)
 class HashMap:
 
+    # HashMap Constructor function
     def __init__(self, hash_len=10):
         self.size = hash_len
         self.map = [None] * self.size
         
-
+    # Self adjusting index getter that assigns index to packages inserted into the hashmap according to their package id by using the modulus operator performed against the size (length) of the hashmap. For this project, the hashmap length is set to 10
     def _get_bucket_index(self, id):
         index = int(id) % self.size
         return index
