@@ -26,6 +26,11 @@ class HashMap:
             return self.map[hashIndex][id]
         return None
 
+    def lookup(self, id, attribute):
+        hashIndex = self._get_bucket_index(id)
+        row = self.map[hashIndex][id]
+        return row[attribute]
+
     def delete(self, id):
         hashIndex = self._get_bucket_index(id)
         self.map[hashIndex].pop(id, "Package Not Found")

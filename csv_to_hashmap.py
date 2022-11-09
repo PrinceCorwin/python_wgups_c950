@@ -1,24 +1,22 @@
 import csv
 from hashmap import HashMap
 
-# Read CSV data into HashMap
-# Space-time complexity: O(n)
-with open('Python_WGUPS_C950\wgu_c950\PackagesForHash.csv') as csvfile:
-    CSVPkgData = csv.DictReader(csvfile, ("Pkg ID","Deliv Address", "City", "State", "Zip", "Estimated Deliv Time", "Mass", "Note"))
-    # Create new empty instance of the HashMap class and Add each row of csv file to it
+# Read PackagesForHash CSV data into HashMap
+# Space-time complexity: O(1)
+with open("Python_WGUPS_C950\wgu_c950\PackagesForHash.csv") as csvfile:
+    CSVPkgData = csv.DictReader(csvfile, ("Pkg ID","Deliv Address", "City", "State", "Zip", "Delivery Deadline", "Weight", "Note"))
+    # Create new empty instance of the HashMap class and Add each row of csv file to it. Actual Delivery Time attribute is also added to the HashMap
     PkgData = HashMap()
-    PkgList = []
     for row in CSVPkgData:
-        row['Delivery Status'] = 'At Hub'
+        row['Delivery Status'] = ''
         row['Actual Deliv Time'] = ''
         PkgData.insert(row['Pkg ID'], row)
-        PkgList.append(row['Pkg ID'])
     def get_map():
         return PkgData
-    def get_pkg_list():
-        return PkgList        
-    
-with open('Python_WGUPS_C950\wgu_c950\DistancesForHash.csv') as csvfile:
+
+ # Read DistancesForHash CSV data into a dictionary
+ # Space-Time Complexity: O(1)
+with open("Python_WGUPS_C950\wgu_c950\DistancesForHash.csv") as csvfile:
     CSVDistData = csv.DictReader(csvfile)
     DistData = {}
     for row in CSVDistData:
