@@ -7,7 +7,7 @@ DistData = get_dist_data()
 truck1 = ['7', '10', '13', '14', '15', '16', '19', '20', '27', '29', '30', '31', '34', '35', '37', '39']
 
 # Load truck 2 with packages that have start time or truck constraints, as well as other packages at the same address
-truck2 = ['1', '2', '3' , '4' , '5', '6', '8', '12', '17', '18', '22', '25', '28', '32', '36', '38']
+truck2 = ['1', '2', '3', '4', '5', '6', '8', '12', '17', '18', '22', '25', '28', '32', '36', '38']
 
 # Load remaining packages on truck 3 (which is actually the second trip of truck 1)
 truck3 = ['9', '11', '21', '23', '24', '26', '33', '40']
