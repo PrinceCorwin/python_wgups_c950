@@ -1,7 +1,0 @@
-
-use chosen algorithm to figure out route
-deliver trucks (store start and delivery dates)
-
-to find route, I'll need:
-    current location (name, address)
-    list of remaining addresses
