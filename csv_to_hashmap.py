@@ -2,7 +2,7 @@ import csv
 from hashmap import HashMap
 
 # Read PackagesForHash CSV data into HashMap
-# Space-time complexity: O(1)
+# Space-time complexity: O(n)
 with open("PackagesForHash.csv") as csvfile:
     CSVPkgData = csv.DictReader(csvfile, ("Pkg ID","Deliv Address", "City", "State", "Zip", "Delivery Deadline", "Weight", "Note"))
     # Create new empty instance of the HashMap class and Add each row of csv file to it. Actual Delivery Time attribute is also added to the HashMap
@@ -15,7 +15,7 @@ with open("PackagesForHash.csv") as csvfile:
         return PkgData
 
  # Read DistancesForHash CSV data into a dictionary
- # Space-Time Complexity: O(1)
+ # Space-Time Complexity: O(n)
 with open("DistancesForHash.csv") as csvfile:
     CSVDistData = csv.DictReader(csvfile)
     DistData = {}

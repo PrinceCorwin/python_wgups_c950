@@ -41,6 +41,12 @@ def truck_route(truck, start, whichTruck):
     # Loop to determine which of the remaining packages to be delivered is closest to the previous delivery address. When found, that pkg will be appended to the route list. This will continue until all packages are delivered
     # Space-Time Complexity: O(n^2)
     while len(route) != len(truck):
+        # check to see if Package 9 is on this truck and whether or not it is time to change the address
+        if '9' in truck and start + (truck_distance / 18) > 10.33:
+            newAddress = current_hash.get("9")
+            newAddress["Deliv Address"] = "410 S State St"
+            newAddress["Zip"] = "84111"
+            address_correction = True
         for i in truck:
             if i not in delivered_pkg:
                 # Conditional to verify that if package 9 is being considered for the next delivery, its addres has already been corrected. If it has not been corrected, it will not be considered
@@ -52,12 +58,7 @@ def truck_route(truck, start, whichTruck):
                         least_distance = miles
                         next_location[0] = next
                         current_pkg[0] = i
-                    # check to see if Package 9 is on this truck and whether or not it is time to change the address
-                    if '9' in truck and start + (truck_distance / 18) > 10.33:
-                        newAddress = current_hash.get("9")
-                        newAddress["Deliv Address"] = "410 S State St"
-                        newAddress["Zip"] = "84111"
-                        address_correction = True
+
         # after for loop completes, The package with the closest proximity to the last delivery address will be appended to the route list. Distance and time will be added to their respective variables as well
         route.append(next_location[0])
         delivered_pkg.append(current_pkg[0])

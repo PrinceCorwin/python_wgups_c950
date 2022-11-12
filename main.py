@@ -1,11 +1,14 @@
 # Steve Amalfitano Student ID #: 010116956
 
-# Import python datetime module and required data from this program's run_route module
+# Import python datetime module
 import datetime
+
+# run_route is the central function of the program. It makes use of the Greedy Algorithm and finds the optimal delivery route for each truck using the nearest neigbor approach.
+# Space-Time Complexity: O(n^2)
+# It is this function that drives the Space-Time complexity of the entire program to be O(n^2)
 from run_route import run_route
 
-# Main function to initiate user interface and run all other functions
-# Space-Time Complexityof the Entire Program: O(n^2)
+# Main function to initiate user interface functions
 class Main: 
     # Call the run_route function to get delivery sequence and distance data
     del1, del2, del3, currentHash = run_route()
@@ -13,12 +16,16 @@ class Main:
     # Function to lookup the delivery status of package selected by user at the time designated by user. Delivery times stored in the hashmap are converted to datetime objects for comparison to the user entered time of query
     #Space-Time complexity: O(1)
     def pkgStatus(pkg_id, time, hash):
-        currentPkg = hash.get(str(pkg_id))
         # check to see if it is time to change the address of package number 9
         if time.hour + time.minute / 60 + time.second / 3600 < 10.33:
-            currentPkg = hash.get(str(pkg_id))
-            currentPkg["Deliv Address"] = "300 State St"
-            currentPkg["Zip"] = "84103"
+            changeAddress = hash.get(('9'))
+            changeAddress["Deliv Address"] = "300 State St"
+            changeAddress["Zip"] = "84103"
+        else:
+            changeAddress = hash.get(('9'))
+            changeAddress["Deliv Address"] = "410 S State St"
+            changeAddress["Zip"] = "84111"
+        currentPkg = hash.get(str(pkg_id))
         routeStart = datetime.timedelta(hours=float(currentPkg["Route Start"]))
         routeStart = datetime.datetime.strptime(str(routeStart), "%H:%M:%S")
         delivtime = datetime.timedelta(hours=float(currentPkg["Actual Deliv Time"]))
@@ -86,6 +93,7 @@ class Main:
     print("\nEnter 'done' at any time to exit program.")
 
     # User interface begins with requesting and validating time from user
+    # After time is determined by user, either a single package or all package statuses are printed to console
     # Space-Time Complexity: O(n)
     while True:
         mil_time_format = "%H:%M:%S"
@@ -114,7 +122,8 @@ class Main:
             break
         elif query_main == 'pkg':
 
-            # Request and validate package ID from user                    
+            # Request and validate package ID from user  
+            # Space-Time Complexity: O(1)                  
             while True:
                 pkg_id = input("Enter Package ID (or 'done' to exit): ").lower()
                 if pkg_id == 'done':
@@ -154,6 +163,7 @@ class Main:
             print(f"Third Delivery (Truck 1 second trip): {del3_miles} miles")
             print(f"Total Truck Mileage (all 3 Deliveries) at Time {valid_time.time()}: {total_miles} miles") 
         # Ask user if they want to continue with another query. Validate correct input format and either run the main while loop again, or break and end program
+        # Space-Time complexity: O(1)
         while True:
             repeat = input("\nAnother Status Query? (y or n): ").lower()
             if repeat == 'y' or repeat == 'n' or repeat == 'done':
