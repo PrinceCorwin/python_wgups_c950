@@ -17,7 +17,7 @@ truck3 = ['9', '11', '21', '23', '24', '26', '33', '40']
 def run_route():
     truck1_start = 8
     truck1_list = truck_route(truck1, truck1_start, "Truck 1 (First Trip)")
-    truck2_start = 9.08
+    truck2_start = 9.09
     truck2_list = truck_route(truck2, truck2_start, "Truck 2")
     truck3_start = float("{:.2f}".format(truck1_start + (truck1_list[1] / 18)))
     truck3_list = truck_route(truck3, truck3_start, "Truck 1 (Second Trip)")
